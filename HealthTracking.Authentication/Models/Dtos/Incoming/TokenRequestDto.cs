@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HealthTracking.Authentication.Models.Dtos.Outgoing
+namespace HealthTracking.Authentication.Models.Dtos.Incoming
 {
-    public class AuthResult
+    public class TokenRequestDto
     {
+        [Required]
         public string Token { get; set; }
+        
+        [Required]
         public string RefreshToken { get; set; }
-        public bool Success { get; set; }
-        public List<string> Errors { get; set; }
     }
 }

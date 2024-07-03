@@ -22,9 +22,11 @@ namespace HealthTracking.DataService.Data
             _logger = loggerFactory.CreateLogger("db_logs");
 
             Users = new UsersRepository(context, _logger);
+            RefreshTokens = new RefreshTokensRepository(context, _logger);
         }
         public IUsersRepository Users { get; private set; }
 
+        public IRefreshTokensRepository RefreshTokens { get; private set; }
 
         public async Task CompleteAsync()
         {

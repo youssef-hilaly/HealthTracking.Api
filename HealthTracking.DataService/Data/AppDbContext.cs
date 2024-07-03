@@ -8,6 +8,7 @@ namespace HealthTracking.DataService.Data
     {
         // add-migration init -StartupProject HealthTracking.Api  // for refrencing
         public virtual DbSet<User> Users {  get; set; }
+        public virtual DbSet<RefreshToken> RefreshTokens {  get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
     }
 }

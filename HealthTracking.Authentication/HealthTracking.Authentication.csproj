@@ -12,8 +12,4 @@
     <None Remove="Configration\Models\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\Dtos\Generic\" />
-  </ItemGroup>
-
 </Project>
