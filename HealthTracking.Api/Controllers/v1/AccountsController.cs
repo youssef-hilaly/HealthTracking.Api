@@ -1,4 +1,5 @@
-﻿using HealthTracking.Authentication.Configration;
+﻿using AutoMapper;
+using HealthTracking.Authentication.Configration;
 using HealthTracking.Authentication.Models.Dtos.Generic;
 using HealthTracking.Authentication.Models.Dtos.Incoming;
 using HealthTracking.Authentication.Models.Dtos.Outgoing;
@@ -18,18 +19,21 @@ namespace HealthTracking.Api.Controllers.v1
 {
     public class AccountsController : BaseController
     {
-        private readonly UserManager<IdentityUser> _userManager;
         private readonly JwtConfig _jwtConfig;
         private readonly TokenValidationParameters _tokenValidationParameters;
         public AccountsController(
             IUnitOfWork unitOfWork,
             UserManager<IdentityUser> userManager,
             IOptionsMonitor<JwtConfig> optionsMonitor,
-            TokenValidationParameters tokenValidationParameters) : base(unitOfWork)
+            TokenValidationParameters tokenValidationParameters,
+            IMapper mapper) : base(unitOfWork, userManager, mapper)
         {
-            _userManager = userManager;
             _jwtConfig = optionsMonitor.CurrentValue;
             _tokenValidationParameters = tokenValidationParameters;
+
+            // it will check for the ValidateLifetime inside validate token while working on refresh token so iw will throw an exeption couse of the expiration
+            // so we need to diabled it
+            _tokenValidationParameters.ValidateLifetime = false;
         }
 
         [HttpPost]
@@ -303,6 +307,7 @@ namespace HealthTracking.Api.Controllers.v1
                 Subject = new ClaimsIdentity(new[]
                 {
                     new Claim("id", user.Id),
+                    new Claim(ClaimTypes.NameIdentifier, user.Id), // To keep track for the logged in user To know who is that user from the token
                     new Claim(JwtRegisteredClaimNames.Sub, user.Email), // unique
                     new Claim(JwtRegisteredClaimNames.Email, user.Email),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) // used by refresh token

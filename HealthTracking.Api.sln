@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthTracking.DataService"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthTracking.Entity", "HealthTracking.Entity\HealthTracking.Entity.csproj", "{B7A6C975-7C8F-49F9-BCC6-B637BEBEDCB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthTracking.Authentication", "HealthTracking.Authentication\HealthTracking.Authentication.csproj", "{FAD02F05-78D4-4473-B913-44FD10C57D0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthTracking.Authentication", "HealthTracking.Authentication\HealthTracking.Authentication.csproj", "{FAD02F05-78D4-4473-B913-44FD10C57D0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthTracking.Configration", "HealthTracking.Configration\HealthTracking.Configration.csproj", "{40E6B437-439B-4CAC-9991-394A72DCCD94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{FAD02F05-78D4-4473-B913-44FD10C57D0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAD02F05-78D4-4473-B913-44FD10C57D0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAD02F05-78D4-4473-B913-44FD10C57D0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40E6B437-439B-4CAC-9991-394A72DCCD94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40E6B437-439B-4CAC-9991-394A72DCCD94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40E6B437-439B-4CAC-9991-394A72DCCD94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40E6B437-439B-4CAC-9991-394A72DCCD94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

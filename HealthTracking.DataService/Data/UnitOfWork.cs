@@ -15,6 +15,9 @@ namespace HealthTracking.DataService.Data
         private readonly AppDbContext _context;
         private readonly ILogger _logger;
 
+        public IUsersRepository Users { get; private set; }
+        public IRefreshTokensRepository RefreshTokens { get; private set; }
+        public IHealthDataRepository HealthData { get; private set; }
 
         public UnitOfWork(AppDbContext context, ILoggerFactory loggerFactory)
         {
@@ -23,10 +26,8 @@ namespace HealthTracking.DataService.Data
 
             Users = new UsersRepository(context, _logger);
             RefreshTokens = new RefreshTokensRepository(context, _logger);
+            HealthData = new HealthDataRepository(context, _logger);
         }
-        public IUsersRepository Users { get; private set; }
-
-        public IRefreshTokensRepository RefreshTokens { get; private set; }
 
         public async Task CompleteAsync()
         {

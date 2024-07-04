@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace HealthTracking.DataService.IRepository
 {
-    public interface IUsersRepository : IGenericRepository<User>
+    public interface IHealthDataRepository : IGenericRepository<HealthData>
     {
-        Task<bool> UpdateUserProfile(User user);
-        Task<User> GetByIdentityId(Guid identityId);
-        Task<User> FindByEmail(string Email);
+
     }
 }

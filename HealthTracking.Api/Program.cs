@@ -1,3 +1,4 @@
+using HealthTracking.Api.Configrations;
 using HealthTracking.Authentication.Configration;
 using HealthTracking.DataService.Data;
 using HealthTracking.DataService.IConfigration;
@@ -17,6 +18,8 @@ builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection("JwtConfi
 
 var connectionString = builder.Configuration.GetConnectionString("DefalutConnection");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddAutoMapper(typeof(MapperConfig));
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 

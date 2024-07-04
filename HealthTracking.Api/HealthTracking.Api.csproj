@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.6" />
@@ -25,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HealthTracking.Authentication\HealthTracking.Authentication.csproj" />
+    <ProjectReference Include="..\HealthTracking.Configration\HealthTracking.Configration.csproj" />
     <ProjectReference Include="..\HealthTracking.DataService\HealthTracking.DataService.csproj" />
   </ItemGroup>
 
