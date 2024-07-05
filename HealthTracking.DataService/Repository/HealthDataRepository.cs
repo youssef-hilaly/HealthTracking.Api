@@ -32,6 +32,18 @@ namespace HealthTracking.DataService.Repository
             }
         }
 
+        public async Task<List<HealthData>> GetUserHealthData(Guid userId)
+        {
+            try
+            {
+                return await dbSet.Where(h => h.userId == userId).ToListAsync();
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+        }
+
         public async Task<bool> UpdateHealthData(HealthData healthData)
         {
             try
@@ -48,9 +60,6 @@ namespace HealthTracking.DataService.Repository
                 existHealthData.UseGlasses = healthData.UseGlasses;
                 existHealthData.UpdateDate = DateTime.UtcNow;
 
-
-
-
                 return true;
             }
             catch (Exception ex)
@@ -59,6 +68,8 @@ namespace HealthTracking.DataService.Repository
                 return false;
             }
         }
+
+
 
     }
 

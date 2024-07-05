@@ -25,7 +25,6 @@ namespace HealthTracking.Api.Controllers.v1
         }
 
         [HttpGet]
-
         public async Task<IActionResult> GetUsers()
         {
             var result = new PagedResult<UserDto>();

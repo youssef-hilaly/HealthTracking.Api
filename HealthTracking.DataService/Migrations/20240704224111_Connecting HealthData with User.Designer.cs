@@ -4,6 +4,7 @@ using HealthTracking.DataService.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HealthTracking.DataService.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240704224111_Connecting HealthData with User")]
+    partial class ConnectingHealthDatawithUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,12 +33,6 @@ namespace HealthTracking.DataService.Migrations
 
                     b.Property<DateTime>("AddedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<decimal>("BloodPresure")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("BooldSugerLevel")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("BooldType")
                         .HasColumnType("nvarchar(max)");
@@ -63,7 +60,8 @@ namespace HealthTracking.DataService.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("userId");
+                    b.HasIndex("userId")
+                        .IsUnique();
 
                     b.ToTable("HealthData");
                 });
@@ -356,8 +354,8 @@ namespace HealthTracking.DataService.Migrations
             modelBuilder.Entity("HealthTracking.Entity.DbSet.HealthData", b =>
                 {
                     b.HasOne("HealthTracking.Entity.DbSet.User", "User")
-                        .WithMany("HealthData")
-                        .HasForeignKey("userId")
+                        .WithOne("HealthData")
+                        .HasForeignKey("HealthTracking.Entity.DbSet.HealthData", "userId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

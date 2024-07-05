@@ -1,11 +1,13 @@
 ﻿using HealthTracking.DataService.Data;
 using HealthTracking.DataService.IRepository;
 using HealthTracking.Entity.DbSet;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 

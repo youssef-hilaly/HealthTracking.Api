@@ -4,6 +4,7 @@ using HealthTracking.DataService.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HealthTracking.DataService.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240705124251_Change the relation between user and healthdata to one-to-many relation")]
+    partial class Changetherelationbetweenuserandhealthdatatoonetomanyrelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,12 +33,6 @@ namespace HealthTracking.DataService.Migrations
 
                     b.Property<DateTime>("AddedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<decimal>("BloodPresure")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("BooldSugerLevel")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("BooldType")
                         .HasColumnType("nvarchar(max)");
